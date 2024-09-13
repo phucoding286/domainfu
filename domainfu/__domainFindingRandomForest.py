@@ -1,4 +1,4 @@
-from __domainFindingRandomForest import PredictDomain
+from __predictDomainRandomForest import PredictDomain
 from __getDomainOnEmailFake import GetDomainEmailFake
 from __getDomainInfomation import GetDomainInfo
 import threading
