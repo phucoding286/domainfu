@@ -8,8 +8,9 @@ from sklearn.neighbors import KNeighborsClassifier
 
 class PredictDomain:
 
-    def __init__(self, path_train="train_v2.txt"):
+    def __init__(self, path_train="train_v2.txt", num_models=4):
         self.path_train = path_train
+        self.num_models = num_models
     
 
     # chuẩn bị data
@@ -33,16 +34,10 @@ class PredictDomain:
         bow_transformer = CountVectorizer(analyzer="char")
         X_train = bow_transformer.fit_transform(X_train[0]).toarray()
         
-        # kết hợp nhiều mô hình AI machine learning
-        desicion_tree = DecisionTreeClassifier()
         random_forest = RandomForestClassifier()
-        bayes_model = GaussianNB()
-        svm_model = SVC(probability=True)
-        knn_model = KNeighborsClassifier(n_neighbors=3)
 
         # mô hình hội quyết định
-        voting_model = VotingClassifier(estimators=[("desicion tree", desicion_tree),
-                                                    ("random forest", random_forest)], voting="hard")
+        voting_model = VotingClassifier(estimators=[(f"random forest {str(i)}", random_forest) for i in range(self.num_models)], voting="hard")
         
         # training mô hình hội quyết định
         voting_model.fit(X_train, y_train)
