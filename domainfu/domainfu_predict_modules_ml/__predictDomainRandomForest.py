@@ -6,7 +6,7 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 
 
-class PredictDomain:
+class PredictDomainRDFR:
 
     def __init__(self, path_train="train_v2.txt", num_models=4):
         self.path_train = path_train

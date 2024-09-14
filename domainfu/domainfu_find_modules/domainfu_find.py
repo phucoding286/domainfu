@@ -1,21 +1,30 @@
-from __predictDomainRandomForest import PredictDomain
-from __getDomainOnEmailFake import GetDomainEmailFake
-from __getDomainInfomation import GetDomainInfo
+try:
+    from domainfu_predict_modules_ml.__predictDomainRandomForest import PredictDomainRDFR
+    from domainfu_predict_modules_ml.__predictDomainMachineLearning import PredictDomain
+    from domainfu_predict_modules_ml.__predictDomainLogistic import LogisticRegression
+except: pass
+from domainfu_needed_modules.__getDomainOnEmailFake import GetDomainEmailFake
+from domainfu_needed_modules.__getDomainInfomation import GetDomainInfo
 import threading
 import os
+import time
 
 class DomainFind:
     
     def __init__(self, path_log="./domainfu/log_domain.txt", path_save="./domainfu/domain_saved.txt",
-            path_train="./domainfu/domain_train.txt", tdls = ["net", "com"], day_limit=7):
+            path_train="./domainfu/domain_train.txt", tdls = ["net", "com"], day_limit=7, algorithm_pred="rdfr"):
         
         self.path_log = path_log
         self.tdls = tdls
         self.day_limit = day_limit
         self.path_train = path_train
         self.path_save = path_save
+        
+        if algorithm_pred == "rdfr": self.predict_model = [PredictDomainRDFR(self.path_train), print("bạn đã chọn thuật toán random forests\n".upper()), time.sleep(1)][0]
+        elif algorithm_pred == "logi": self.predict_model = [LogisticRegression(self.path_train), print("bạn đã chọn thuật toán Logistic Regression\n".upper()), time.sleep(1)][0]
+        elif algorithm_pred == "ml": self.predict_model = [PredictDomain(self.path_train), print("bạn đã chọn thuật toán ML kết hợp\n".upper()), time.sleep(1)][0]
+        else: self.predict_model = PredictDomainRDFR(self.path_train)
 
-        self.predict_model = PredictDomain(self.path_train)
         self.get_domain_on_emailfake = GetDomainEmailFake(path_log, path_save, path_train, tdls, day_limit)
         self.get_domain_info = GetDomainInfo(tdls)
         
@@ -91,7 +100,7 @@ class DomainFind:
     def run_all_script(self):
         print("*BETA version")
         print("*Công cụ AI phân tích tên miền Domain-FU thế hệ thứ 2 với các cập nhật về tốc độ tìm kiếm và dự đoán tên miền ^_+")
-        print("-For CloudSigma Service-")
+        print("For CloudSigma Service - OPEN SOURCE")
         c = False
         while True:
             if c is False:

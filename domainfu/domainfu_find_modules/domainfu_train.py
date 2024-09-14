@@ -1,4 +1,4 @@
-from __getDomainInfomation import GetDomainInfo
+from domainfu_needed_modules.__getDomainInfomation import GetDomainInfo
 
 class TrainingML:
     def __init__(self, path_train="./domainfu/domain_train.txt", tlds=["net", "com"]):
