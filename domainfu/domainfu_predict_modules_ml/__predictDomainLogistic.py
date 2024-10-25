@@ -16,8 +16,8 @@ class LogisticRegression:
             data = file.read().splitlines()
 
             for info in data:
-                X_train.append(info.split(" - ")[0])
-                y_train.append(info.split(" - ")[1])
+                X_train.append(" - ".join(info.split(" - ")[:-1]))
+                y_train.append(info.split(" - ")[-1])
 
         return X_train, y_train
 

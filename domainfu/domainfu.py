@@ -11,9 +11,9 @@ print()
 
 def chat_ui_clsf_algorithm():
     print("chọn các thuật toán tìm kiếm tên miền sau")
-    print("1. tổng hợp nhiều thuật toán machine learning (có thể thiếu chính xác)")
-    print("2. thuật toán random forest")
-    print("3. thuật toán Logistic Regression (được viết để chạy trên termux, không nên dùng trên máy tính)")
+    print("1. tổng hợp nhiều thuật toán machine learning (có thể thiếu chính xác) (ml)")
+    print("2. thuật toán random forest (ml)")
+    print("3. thuật toán Logistic Regression (được viết để chạy trên termux, không nên dùng trên máy tính) (ml)")
 
     inp = None
     while True:
