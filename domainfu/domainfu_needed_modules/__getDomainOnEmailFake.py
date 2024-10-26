@@ -3,12 +3,13 @@ from bs4 import BeautifulSoup
 
 class GetDomainEmailFake:
     
-    def __init__(self, path_log="log_domain.txt", path_save="domain_saved.txt", path_train="domain_train.txt", tdls = ["net", "com"], day_limit=7):
+    def __init__(self, path_log="log_domain.txt", path_save="domain_saved.txt", path_train="domain_train.txt", tdls = ["net", "com"], day_limit=7, verbose=True):
         self.path_log = path_log
         self.tdls = tdls
         self.day_limit = day_limit
         self.path_train = path_train
         self.path_save = path_save
+        self.verbose = verbose
 
 
     def get_domain(self):
@@ -32,21 +33,25 @@ class GetDomainEmailFake:
             domains = f.read()
 
         if domain in domains.splitlines():
-            print(f"tên miền {domain} có trong log!")
+            if self.verbose:
+               print(f"tên miền {domain} có trong log!")
             return 0
         else:
-            print(f"tên miền mới {domain}")
+            if self.verbose:
+                print(f"tên miền mới {domain}")
             return 1
 
     
 
     def check_tlds(self, domain: str):
         if domain.split(".")[1].strip() not in self.tdls:
-            print(f"đuôi tên miền {domain} không thuộc vùng tên miền đã train: {self.tdls} nên sẽ được bỏ qua")
+            if self.verbose:
+                print(f"đuôi tên miền {domain} không thuộc vùng tên miền đã train: {self.tdls} nên sẽ được bỏ qua")
             return 0
         
         else:
-            print(f"đuôi tên miền {domain} nằm trong vùng hợp lệ: {self.tdls}")
+            if self.verbose:
+                print(f"đuôi tên miền {domain} nằm trong vùng hợp lệ: {self.tdls}")
             return 1
         
 
@@ -68,10 +73,12 @@ class GetDomainEmailFake:
         day = result["uptime"]
 
         if int(day) > self.day_limit:
-            print(f"số ngày đăng tên miền {domain} quá lớn so với mức quy định {self.day_limit} nên bỏ qua!")
+            if self.verbose:
+                print(f"số ngày đăng tên miền {domain} quá lớn so với mức quy định {self.day_limit} nên bỏ qua!")
             return 0
         else:
-            print(f"tên miền {domain} có số ngày đã đúng mức quy định {self.day_limit}!!")
+            if self.verbose:
+                print(f"tên miền {domain} có số ngày đã đúng mức quy định {self.day_limit}!!")
             return 1
         
     

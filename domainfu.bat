@@ -1,0 +1,1 @@
+python ./domainfu_new_ui/main.py

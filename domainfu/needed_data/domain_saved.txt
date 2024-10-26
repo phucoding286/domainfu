@@ -1,3 +1,5 @@
-siteinfox.com : 0
-updatehyper.com : 0
-tiprealm.com : 0
+example1.com -> good
+example1.com -> good
+example1.com -> good
+example1.com -> good
+example1.com -> bad
