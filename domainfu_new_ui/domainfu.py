@@ -62,7 +62,10 @@ def get_domain_infomation(domain):
 
 # predict domain and return result with language
 def predict_domain(domain_info):
-    predict_result = int(predict_object.predict(domain_info))
+    try:
+        predict_result = int(predict_object.predict(domain_info))
+    except Exception as e:
+        return {"error": 'đã có lỗi khi dự đoán tên miền'}
     if bool(predict_result):
         return {"predict_result": "domain có thể dùng được", "status_clsf": bool(predict_result)}
     else:
@@ -91,8 +94,10 @@ def domainfu_run(save_path="./domainfu/needed_data/domain_saved.txt"):
     else:
         domain_info = get_domain_infomation(domain_result['domain'])
         predict_domain_result = predict_domain(domain_info)
-
-        if predict_domain_result['status_clsf']:
+        
+        if "error" in predict_domain_result:
+            return {'status': 'bad', 'message': predict_domain_result['error']}
+        elif predict_domain_result['status_clsf']:
             domain_writer(status="good", domain=domain_result['domain'], save_path=save_path)
             return {'status': 'good', 'message': f"công cụ tin rằng domain -> {domain_result['domain']} phù hợp tiêu chuẩn"}
         else:
