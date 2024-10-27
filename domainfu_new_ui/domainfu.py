@@ -73,13 +73,18 @@ def predict_domain(domain_info):
 
 
 # run needed script
-def domainfu_run(save_path="./domainfu/needed_data/domain_saved.txt"):
+def domainfu_run(save_path=domain_object.path_save, log_path=domain_object.path_log):
 
     def domain_writer(status: str, domain: str, save_path):
         try:
+            # lưu vào file lưu trữ
             with open(save_path, "a") as file:
                 file.write(f"{domain_result['domain']} -> {status}\n")
                 print(colorama.Fore.GREEN + f"\nđã lưu tên miền -> {domain} thành công" + colorama.Style.RESET_ALL)
+            # lưu vào log
+            with open(save_path, "a") as file:
+                file.write(f"{domain_result['domain']}\n")
+                print(colorama.Fore.GREEN + f"\nđã lưu tên miền -> {domain} vào log thành công" + colorama.Style.RESET_ALL)
         except Exception as e:
             print(colorama.Fore.RED + f"\nđã có lỗi khi lưu tên miền -> {domain}, mã lỗi: {e}" + colorama.Style.RESET_ALL)
 
