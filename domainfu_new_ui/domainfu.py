@@ -82,7 +82,7 @@ def domainfu_run(save_path=domain_object.path_save, log_path=domain_object.path_
                 file.write(f"{domain_result['domain']} -> {status}\n")
                 print(colorama.Fore.GREEN + f"\nđã lưu tên miền -> {domain} thành công" + colorama.Style.RESET_ALL)
             # lưu vào log
-            with open(save_path, "a") as file:
+            with open(log_path, "a") as file:
                 file.write(f"{domain_result['domain']}\n")
                 print(colorama.Fore.GREEN + f"đã lưu tên miền -> {domain} vào log thành công" + colorama.Style.RESET_ALL)
         except Exception as e:
