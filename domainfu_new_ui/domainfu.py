@@ -93,7 +93,7 @@ def domainfu_run(save_path="./domainfu/needed_data/domain_saved.txt"):
         return {'status': 'bad', 'message': f"{domain_result['domain']} -> số ngày hoạt động nhỏ hơn mức quy định"}
     else:
         domain_info = get_domain_infomation(domain_result['domain'])
-        predict_domain_result = predict_domain(domain_info)
+        predict_domain_result = predict_domain(domain_info['domain_info'])
         
         if "error" in predict_domain_result:
             return {'status': 'bad', 'message': predict_domain_result['error']}
