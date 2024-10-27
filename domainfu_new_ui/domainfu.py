@@ -79,9 +79,9 @@ def domainfu_run(save_path="./domainfu/needed_data/domain_saved.txt"):
         try:
             with open(save_path, "a") as file:
                 file.write(f"{domain_result['domain']} -> {status}\n")
-                print(colorama.Fore.GREEN + f"đã lưu tên miền -> {domain} thành công" + colorama.Style.RESET_ALL)
+                print(colorama.Fore.GREEN + f"\nđã lưu tên miền -> {domain} thành công" + colorama.Style.RESET_ALL)
         except Exception as e:
-            print(colorama.Fore.RED + f"đã có lỗi khi lưu tên miền -> {domain}, mã lỗi: {e}" + colorama.Style.RESET_ALL)
+            print(colorama.Fore.RED + f"\nđã có lỗi khi lưu tên miền -> {domain}, mã lỗi: {e}" + colorama.Style.RESET_ALL)
 
     domain_result = get_and_filter_domain()
 
