@@ -189,7 +189,7 @@ def UI():
         print(colorama.Fore.YELLOW + "| facebook -> Programing Sama             |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| youtube -> Phu Tech                     |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| github -> @phucoding286                 |" + colorama.Style.RESET_ALL)
-        print(colorama.Fore.YELLOW + "| version -> PC                           |" + colorama.Style.RESET_ALL)
+        print(colorama.Fore.YELLOW + "| version -> MOBILE                       |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + " -----------------------------------------" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [1] -> tìm kiếm tên miền với công cụ AI |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [2] -> kiểm tra các tên miền đã lưu     |" + colorama.Style.RESET_ALL)
