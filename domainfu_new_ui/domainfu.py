@@ -176,6 +176,12 @@ def read_domain(path_save=domain_object.path_save):
     return 0
 
 
+def clear_domains(path_save=domain_object.path_save):
+    with open(path_save, "w") as file:
+        file.write("")
+        input(colorama.Fore.GREEN + "[*] đã làm sạch file lưu trữ tên miền, enter để quay lại\n-> " + colorama.Style.RESET_ALL)
+
+
 def UI():
     while True:
         print(colorama.Fore.YELLOW + " -----------------------------------------" + colorama.Style.RESET_ALL)
@@ -186,6 +192,7 @@ def UI():
         print(colorama.Fore.YELLOW + " -----------------------------------------" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [1] -> tìm kiếm tên miền với công cụ AI |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [2] -> kiểm tra các tên miền đã lưu     |" + colorama.Style.RESET_ALL)
+        print(colorama.Fore.YELLOW + "| [3] -> clear sạch tất cả tên miền       |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + " -----------------------------------------" + colorama.Style.RESET_ALL)
         
         choose_input = input(colorama.Fore.YELLOW + "\n[i] nhập vào số thứ tự tương ứng tool bạn muốn chạy\n-> " + colorama.Style.RESET_ALL)
@@ -195,3 +202,5 @@ def UI():
             domainfu_run_main()
         elif choose_input.strip().lower() == "2":
             read_domain()
+        elif choose_input.strip().lower() == "3":
+            clear_domains()
