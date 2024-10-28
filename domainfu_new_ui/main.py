@@ -18,15 +18,21 @@ def install_need_package():
 
 
 while True:
-    print("[1] -> tải các gói cần thiết")
-    print("[2] - vào tool domainfu pc")
+    print(" --------------------------------")
+    print("| [1] -> tải các gói cần thiết   |")
+    print("| [2] - vào tool domainfu pc     |")
+    print("| [3] - vào tool domainfu mobile |")
+    print(" --------------------------------")
     
     print()
     choose_input = input("[!] nhập lựa chọn của bạn\n-> ")
 
     if choose_input.strip().lower() == "1":
         install_need_package()
-    if choose_input.strip().lower() == "2":
+    elif choose_input.strip().lower() == "2":
         from domainfu_new_ui.domainfu import UI
+        UI()
+    elif choose_input.strip().lower() == "3":
+        from domainfu_new_ui.domainfu_mb import UI
         UI()
     os.system("cls") if sys.platform.startswith("win") else os.system("clear")

@@ -4,7 +4,7 @@ sys.path.insert(0, base_dir)
 
 from domainfu.domainfu_needed_modules.__getDomainOnEmailFake import GetDomainEmailFake
 from domainfu.domainfu_needed_modules.__getDomainInfomation import GetDomainInfo
-from domainfu.domainfu_predict_modules_ml.__predictDomainMachineLearning import PredictDomain
+from domainfu.domainfu_predict_modules_ml.__predictDomainLogistic import LogisticRegression
 
 import threading
 import time
@@ -30,7 +30,7 @@ domain_object = GetDomainEmailFake(
     verbose=False
 )
 # predict domains can using for cloudsigma via ML and datatrain of domains used for cloudsigma beforce
-predict_object = PredictDomain(
+predict_object = LogisticRegression(
     path_train="./domainfu/needed_data/domain_train.txt"
 )
 # domain info object for get info of domain input via whois
@@ -182,7 +182,7 @@ def UI():
         print(colorama.Fore.YELLOW + "| facebook -> Programing Sama             |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| youtube -> Phu Tech                     |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| github -> @phucoding286                 |" + colorama.Style.RESET_ALL)
-        print(colorama.Fore.YELLOW + "| version -> PC                           |" + colorama.Style.RESET_ALL)
+        print(colorama.Fore.YELLOW + "| version -> MOBILE                       |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + " -----------------------------------------" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [1] -> tìm kiếm tên miền với công cụ AI |" + colorama.Style.RESET_ALL)
         print(colorama.Fore.YELLOW + "| [2] -> kiểm tra các tên miền đã lưu     |" + colorama.Style.RESET_ALL)
