@@ -117,10 +117,10 @@ def domainfu_thread(thread_num=20):
     def __dmfu_run():
         r = domainfu_run()
         if r['status'] == 'bad':
-            print("\r " + 75 * " ", end="")
+            print("\r " + 50 * " ", end="")
             print(colorama.Fore.RED + f"\r[!] {r['message']}" + colorama.Style.RESET_ALL, end="")
         else:
-            print("\r " + 75 * " ", end="")
+            print("\r " + 50 * " ", end="")
             print(colorama.Fore.GREEN + f"\r[!] {r['message']}" + colorama.Style.RESET_ALL, end="")
 
     threads = []
