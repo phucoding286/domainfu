@@ -122,15 +122,23 @@ def domainfu_thread(thread_num=20):
         else:
             print("\r " + 75 * " ", end="")
             print(colorama.Fore.GREEN + f"\r[!] {r['message']}" + colorama.Style.RESET_ALL, end="")
-
+    
+    stop_event = threading.Event()
     threads = []
     for _ in range(thread_num):
         thread = threading.Thread(target=__dmfu_run)
         threads.append(thread)
         thread.start()
-        time.sleep(0.2)
     for thread in threads:
-        thread.join()
+        thread.join(timeout=2)
+    print("\r " + 75 * " ", end="")
+    print(colorama.Fore.GREEN + f"\r[!] đã hết {thread_num} luồng! sẽ quay lại tiếp tục" + colorama.Style.RESET_ALL, end="")
+    print("\r " + 75 * " ", end="")
+    print(colorama.Fore.GREEN + "\r[!] chờ đợi đóng các luồng bị treo..." + colorama.Style.RESET_ALL, end="")
+    for thread in threads:
+        if thread.is_alive():
+            stop_event.set()
+            thread.join(timeout=2)
 
 
 
