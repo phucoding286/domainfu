@@ -63,8 +63,9 @@ def get_domain_infomation(domain):
 # predict domain and return result with language
 def predict_domain(domain_info):
     try:
-        predict_result = int(predict_object.predict(domain_info['domain_info']))
+        predict_result = int(predict_object.predict(domain_info))
     except Exception as e:
+        print(colorama.Fore.RED + f"\n[!] {e}" + colorama.Style.RESET_ALL)
         return {"error": 'đã có lỗi khi dự đoán tên miền'}
     if bool(predict_result):
         return {"predict_result": "domain có thể dùng được", "status_clsf": bool(predict_result)}
