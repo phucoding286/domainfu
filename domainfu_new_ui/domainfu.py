@@ -63,7 +63,7 @@ def get_domain_infomation(domain):
 # predict domain and return result with language
 def predict_domain(domain_info):
     try:
-        predict_result = int(predict_object.predict(domain_info))
+        predict_result = int(predict_object.predict(domain_info['domain_info']))
     except Exception as e:
         return {"error": 'đã có lỗi khi dự đoán tên miền'}
     if bool(predict_result):
